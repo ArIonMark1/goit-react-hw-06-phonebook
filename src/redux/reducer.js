@@ -60,7 +60,7 @@ function addContact(state, action) {
   return [...state, action.payload];
 }
 function refuseAddContact(action) {
-  toast.error(`${action.payload.name} into contacts already.`);
+  toast.error(`${action.payload.name} already in contacts.`);
 }
 function onLoadStorage(state) {
   const dataStorage = localStorage.getItem(LOCAL_KEY);
