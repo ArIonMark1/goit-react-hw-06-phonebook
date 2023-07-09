@@ -1,7 +1,8 @@
 import React from 'react';
 import './ContactList.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/actions';
+// import { deleteContact } from 'redux/actions';
+import { deleteContact } from 'redux/contactsSlice';
 
 const ContactList = () => {
   // *******************************************************
@@ -12,14 +13,13 @@ const ContactList = () => {
   const removeContact = id => dispatch(deleteContact(id));
   // *******************************************************
   function filteredContacts(contacts, filter) {
-    return !filter
+    return !filter.payload
       ? contacts
       : contacts.filter(contact =>
           contact.name.toLowerCase().includes(filter.payload)
         ); // повертає новий масив
   }
   const newListContacts = filteredContacts(listContacts, filterData);
-
   return (
     <div>
       <div className="contactsContainer">

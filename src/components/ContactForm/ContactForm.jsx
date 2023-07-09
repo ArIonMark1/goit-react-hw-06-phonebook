@@ -1,6 +1,6 @@
 import './ContactForm.scss';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/actions';
+import { addContact } from 'redux/contactsSlice';
 
 export default function ContactForm() {
   //форма додавання контакту

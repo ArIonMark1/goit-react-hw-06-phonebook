@@ -2,7 +2,8 @@ import React from 'react';
 import './SearchContacts.scss';
 // import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { findContact } from 'redux/actions';
+// import { findContact } from 'redux/actions';
+import { filterContacts } from 'redux/filterSlice';
 
 export default function SearchContacts() {
   // пише дані в стейт при будь-якій зміні передає значення для обробки
@@ -11,7 +12,7 @@ export default function SearchContacts() {
 
   function handleFilterData(evt) {
     const filterData = evt.target.value.toLowerCase();
-    dispatch(findContact(filterData.trim()));
+    dispatch(filterContacts(filterData.trim()));
   }
   // ********************************
 
