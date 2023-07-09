@@ -1,8 +1,6 @@
 import React from 'react';
 import './SearchContacts.scss';
-// import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-// import { findContact } from 'redux/actions';
 import { filterContacts } from 'redux/filterSlice';
 
 export default function SearchContacts() {
