@@ -1,5 +1,4 @@
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
-import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
 import {
   persistStore,
   persistReducer,
@@ -15,7 +14,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { contactSliceReducer } from './contactsSlice';
 import { filterContactReduser } from './filterSlice';
 
-const persistConfig = { key: 'allContacts', storage, stateReconciler: hardSet };
+const persistConfig = { key: 'allContacts', storage };
 
 const persistContactsReducer = persistReducer(
   persistConfig,

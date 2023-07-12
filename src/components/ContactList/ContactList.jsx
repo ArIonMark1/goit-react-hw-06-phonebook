@@ -7,8 +7,6 @@ const ContactList = () => {
   // *******************************************************
   const listContacts = useSelector(state => state.contacts.contacts);
   const filterData = useSelector(state => state.filters);
-  console.log('filterData: ', filterData);
-  console.log('listContacts: ', listContacts);
 
   const dispatch = useDispatch();
   const removeContact = id => dispatch(deleteContact(id));
