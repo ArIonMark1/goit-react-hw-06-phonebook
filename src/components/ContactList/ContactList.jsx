@@ -5,20 +5,22 @@ import { deleteContact } from 'redux/contactsSlice';
 
 const ContactList = () => {
   // *******************************************************
-  const listContacts = useSelector(state => state.contacts);
+  const listContacts = useSelector(state => state.contacts.contacts);
   const filterData = useSelector(state => state.filters);
+  console.log('filterData: ', filterData);
+  console.log('listContacts: ', listContacts);
 
   const dispatch = useDispatch();
   const removeContact = id => dispatch(deleteContact(id));
   // *******************************************************
   function filteredContacts(contacts, filter) {
-    return !filter.payload
+    return !filter
       ? contacts
-      : contacts.filter(contact =>
-          contact.name.toLowerCase().includes(filter.payload)
-        ); // повертає новий масив
+      : contacts.filter(contact => contact.name.toLowerCase().includes(filter)); // повертає новий масив
   }
+
   const newListContacts = filteredContacts(listContacts, filterData);
+  console.log('newListContacts: ', newListContacts);
   return (
     <div>
       <div className="contactsContainer">

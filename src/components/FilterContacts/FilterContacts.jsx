@@ -1,5 +1,5 @@
 import React from 'react';
-import './SearchContacts.scss';
+import './FilterContacts.scss';
 import { useDispatch } from 'react-redux';
 import { filterContacts } from 'redux/filterSlice';
 
