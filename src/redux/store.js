@@ -9,23 +9,30 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import { contactSliceReducer } from './contactsSlice';
 import { filterContactReduser } from './filterSlice';
+// ----------------------------------------------------------------
 
-const persistConfig = { key: 'allContacts', storage };
+const persistConfig = {
+  key: 'allContacts',
+  storage,
+  blacklist: ['filters'],
+};
 
-const persistContactsReducer = persistReducer(
-  persistConfig,
-  contactSliceReducer
-);
+// -----------------------------------
+const rootReducer = combineReducers({
+  // в об'єкт-стейт по ключу повертає результат редюсера... жесть
+  contacts: contactSliceReducer,
+  filters: filterContactReduser,
+});
+// -----------------------------------
+
+const persistContactsReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: {
-    contacts: persistContactsReducer,
-    filters: filterContactReduser,
-  },
+  reducer: persistContactsReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

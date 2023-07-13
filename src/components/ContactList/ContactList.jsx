@@ -5,20 +5,18 @@ import { deleteContact } from 'redux/contactsSlice';
 
 const ContactList = () => {
   // *******************************************************
-  const listContacts = useSelector(state => state.contacts.contacts);
+  const listContacts = useSelector(state => state.contacts);
   const filterData = useSelector(state => state.filters);
 
   const dispatch = useDispatch();
+  // -------------------------------------------------------
   const removeContact = id => dispatch(deleteContact(id));
   // *******************************************************
-  function filteredContacts(contacts, filter) {
-    return !filter
-      ? contacts
-      : contacts.filter(contact => contact.name.toLowerCase().includes(filter)); // повертає новий масив
-  }
 
-  const newListContacts = filteredContacts(listContacts, filterData);
-  console.log('newListContacts: ', newListContacts);
+  const newListContacts = listContacts.filter(contact =>
+    contact.name.toLowerCase().includes(filterData)
+  ); // перевірка чи є такі символи в імені контакту
+
   return (
     <div>
       <div className="contactsContainer">

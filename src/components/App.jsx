@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
-  const storage = useSelector(state => state.contacts);
+  const storage = useSelector(state => state.contacts); // моя логіка - перевіряємо чи сховище пусте ("контакти пусті" якось не звучить )
   //----------------------------------------------------------------
   /*
   Створи сховище з configureStore()
